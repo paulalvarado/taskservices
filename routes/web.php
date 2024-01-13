@@ -13,6 +13,3 @@ use App\Http\Controllers\TasksController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [TasksController::class, 'index']);
-Route::post('/task/create', [TasksController::class, 'create']);

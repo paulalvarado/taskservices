@@ -15,8 +15,8 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::post('/task/create', [TasksController::class, 'create']);
+Route::get('/task/{id}', [TasksController::class, 'show']);
 Route::get('/task/list', [TasksController::class, 'index']);
-Route::post('/task/update/', [TasksController::class, 'update']);
-Route::delete('/task/delete/', [TasksController::class, 'destroy']);
-Route::get('/task/', [TasksController::class, 'show']);
+Route::post('/task/create', [TasksController::class, 'create']);
+Route::put('/task/update/{id}', [TasksController::class, 'update']);
+Route::delete('/task/delete/{id}', [TasksController::class, 'destroy']);
