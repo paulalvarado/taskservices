@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/task/create', [TasksController::class, 'create']);
+Route::get('/task/list', [TasksController::class, 'index']);
+Route::post('/task/update/', [TasksController::class, 'update']);
+Route::delete('/task/delete/', [TasksController::class, 'destroy']);
+Route::get('/task/', [TasksController::class, 'show']);
