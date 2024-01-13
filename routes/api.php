@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\StageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,18 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/task/{id}', [TasksController::class, 'show']);
-Route::get('/task/list', [TasksController::class, 'index']);
-Route::post('/task/create', [TasksController::class, 'create']);
-Route::put('/task/update/{id}', [TasksController::class, 'update']);
-Route::delete('/task/delete/{id}', [TasksController::class, 'destroy']);
+Route::prefix('task')->group(function () {
+    Route::get('/{id}', [TasksController::class, 'show']);
+    Route::get('/list', [TasksController::class, 'index']);
+    Route::post('/create', [TasksController::class, 'create']);
+    Route::put('/update/{id}', [TasksController::class, 'update']);
+    Route::delete('/delete/{id}', [TasksController::class, 'destroy']);
+});
+
+Route::prefix('stage')->group(function () {
+    Route::get('/', [StageController::class, 'index']);
+    Route::get('/{id}', [StageController::class, 'show']);
+    Route::post('/create', [StageController::class, 'create']);
+    Route::put('/update/{id}', [StageController::class, 'update']);
+    Route::delete('/delete/{id}', [StageController::class, 'destroy']);
+});
